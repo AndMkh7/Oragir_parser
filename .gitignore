@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.*
+grades.json
+chrome_profile/
+debug_*.png
+*.log
+nohup.out
