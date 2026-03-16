@@ -1,7 +1,6 @@
 require('dotenv').config();
-const cron = require('node-cron');
 const { scrapeGrades } = require('./scraper');
-const { startBot, stopBot, setCheckHandler, sendGradeNotification, sendNoNewGrades, sendError } = require('./telegram');
+const { sendGradeNotification, sendNoNewGrades, sendError } = require('./telegram');
 
 let isRunning = false;
 
@@ -29,15 +28,5 @@ async function checkGrades(replyToChatId) {
   }
 }
 
-// If --once flag, run once and exit
-if (process.argv.includes('--once')) {
-  checkGrades().then(() => process.exit(0));
-} else {
-  // Start Telegram bot with /check command
-  startBot();
-  setCheckHandler((chatId) => checkGrades(chatId));
-
-  // Run 3 times a day: 10:00, 15:00, 20:00
-  cron.schedule('0 10,15,20 * * *', () => checkGrades());
-  console.log('Scheduler started. Checking grades at 10:00, 15:00, 20:00');
-}
+// Run once and exit
+checkGrades().then(() => process.exit(0));
