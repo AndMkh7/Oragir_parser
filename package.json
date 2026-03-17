@@ -4,8 +4,7 @@
   "description": "E-diary grade parser with Telegram notifications",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "check": "node index.js --once"
+    "start": "node index.js"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
