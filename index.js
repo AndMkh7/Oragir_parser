@@ -19,7 +19,7 @@ async function checkGrades(replyToChatId) {
       console.log(`Found ${newGrades.length} new grade(s)`);
     } else {
       console.log('No new grades');
-      if (replyToChatId) await sendNoNewGrades(replyToChatId);
+      await sendNoNewGrades(replyToChatId);
     }
   } catch (err) {
     console.error('Error:', err.message);
