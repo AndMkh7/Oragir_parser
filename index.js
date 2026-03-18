@@ -36,8 +36,8 @@ setCheckHandler(checkGrades);
 // Run initial check
 checkGrades();
 
-// Schedule automatic checks every 30 minutes
-cron.schedule('*/30 * * * *', () => {
+// Schedule automatic checks every 3 hours
+cron.schedule('0 */3 * * *', () => {
   checkGrades();
 });
 
